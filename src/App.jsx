@@ -1,3 +1,4 @@
+import Header from "./components/Header"
 
 
 
@@ -5,8 +6,8 @@ function App() {
 
   return (
     <>
-     
-     <header className="py-5 header">
+     <Header/>
+    <header className="py-5 header">
         <div className="container-xl">
             <div className="row justify-content-center justify-content-md-between">
                 <div className="col-8 col-md-3">
