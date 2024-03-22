@@ -1,16 +1,27 @@
-import { useState, useEffect  } from "react"
+import { useState } from "react"
 import Guitar from "./components/Guitar"
 import Header from "./components/Header"
 import { db } from "./data/db"
 
 function App() {
 
-  //State
-//   const [auth, setAuth] = useState(true)
-//   const [total, setTotal] = useState(0)
-
 
   const [data, setData] = useState(db)
+  const [cart, setCart] = useState([])
+
+  function addToCart(item){
+    const itemExits = cart.findIndex(guitar => guitar .id === item.id)
+    if (itemExits >= 0){
+        const updatedCart = [...cart]
+        updatedCart[itemExits].quantity++
+        setCart(updatedCart)
+    }else{
+      item.quantity = 1
+      setCart([...cart, item])
+    
+    }
+  
+  }
 
   return (
     <>
@@ -21,15 +32,21 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-            <Guitar/>
-
+            {data.map((guitar) => (
+                <Guitar
+                   key={guitar.id} 
+                   guitar={guitar} // Aquí se pasa el prop guitar al componente Guitar
+                   setCart={setCart}
+                   addToCart={addToCart}
+                />
+            ))}
         </div>
     </main>
 
 
     <footer className="bg-dark mt-5 py-5">
         <div className="container-xl">
-            <p className="text-white text-center fs-4 mt-4 m-md-0">GuitarLA - Todos los derechos Reservados</p>
+            <p className="text-white text-center fs-4 mt-4 m-md-0">GuitarLA - Todos los derechos Reservados  Moises Alarcon</p>
         </div>
     </footer>
 
