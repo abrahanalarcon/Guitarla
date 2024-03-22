@@ -29,7 +29,7 @@ function Header ({cart})  {
                             </thead>
                             <tbody>
                                 {cart.map( guitar => (
-                                <tr>
+                                <tr key={guitar.id}>
                                     <td>
                                         <img 
                                         className="img-fluid"
