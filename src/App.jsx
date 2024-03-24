@@ -56,18 +56,21 @@ function App() {
     })
     setCart(updatedCart)
   }
-
+  function clearCart(){
+     setCart([])
+  
+  }
  
 
   return (
+    //Full code
     <>
      <Header
         cart={cart}
         removeFromCart={removeFromCart}
         decreaseQuantity={decreaseQuantity}
-        increaseQuantity={increaseQuantity}
-        
-        
+        increaseQuantity={increaseQuantity} 
+        clearCart={clearCart}
      />
     
 
